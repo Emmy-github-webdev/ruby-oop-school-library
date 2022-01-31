@@ -1,15 +1,12 @@
 class Person
+  attr_writer :id
+  attr_accessor :name, :age
   
-  def initialize(name = "Unkown", age, parent_permission = true)
+  def initialize(age, name: 'Unkown',  parent_permission: true)
     @id = Random.rand(1..1000)
     @name = name
-    @parent_permission = parent_permission
     @age = age
   end
-
-  @id
-  @name
-  @age
 
   #Setter
   def name=(name)
@@ -30,14 +27,19 @@ class Person
   end
 
   def age
-    @age
+   print  @age
   end
 
-  def to_s
-    "Hello! My name is #{@name}, and I'm #{age} years old."
+  def can_use_services?
+    age >= 18 || parent_permission == true ? true : false
   end
+
+  private
+
+  def is_of_age?
+    age >= 18 ? true : false
+  end
+
 end
 
-person1 = Person.new
-person1.name = "Emmanuel"
-puts person1.name
+person1 = Person.new(20)
