@@ -17,7 +17,7 @@ class Person
   end
 
   def validate_name
-    @name = @first_leter_capital.Corrector(@name)
+    @name = @first_leter_capital.correct_name(@name)
   end
 
   private
