@@ -85,8 +85,8 @@ class App
     has_permission = gets.chomp.downcase == 'y'
     student = Student.new(classroom: @classroom, age: age, name: name, parent_permission: has_permission)
     @people.push(student)
-    puts
     puts 'Student created successfully'
+    puts
     choose_a_number
   end
 
@@ -99,8 +99,20 @@ class App
     specialization = gets.chomp
     teacher = Teacher.new(age: age, name: name, specialization: specialization)
     @people.push(teacher)
-    puts
     puts 'Teacher created successfully'
+    puts
+    choose_a_number
+  end
+
+  def create_a_book
+    print 'Title: '
+    title = gets.chomp
+    print 'Author'
+    author = gets.chomp
+    book = Book.new(title, author)
+    @book.push(book)
+    puts 'Book cretaed successfully'
+    puts
     choose_a_number
   end
 
