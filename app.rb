@@ -149,5 +149,9 @@ class App
     choose_a_number
     puts
   end
+
+  def exit
+    puts 'Thank you for using this app'
+  end
 end
 
