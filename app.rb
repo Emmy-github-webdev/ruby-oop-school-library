@@ -1,5 +1,13 @@
+require './book'
+require './classroom'
+require './corrector'
+require './person'
+require './rental'
+require './student'
+require './teacher'
+
 class App
-  attr_accessor :books, :people, :rentals
+  attr_accessor :books, :people
 
   def initialize
     @books = []
