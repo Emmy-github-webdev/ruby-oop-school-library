@@ -25,9 +25,12 @@ class App
     puts '5 - Create a rental'
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
+
+    action_based_on_number_choosed = get.chomp
+    choose_a_number action_based_on_number_choosed
   end
 
-  def action_based_on_number_choosed
+  def action_based_on_number_choosed(option)
     case option
     when '1'
       list_all_books
@@ -45,5 +48,7 @@ class App
       exit
     end
   end
+
+
 end
 
