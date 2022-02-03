@@ -148,7 +148,7 @@ class App
     id = gets.chomp.to_i
     puts 'Rentals: '
     @rentals.each do |rental|
-      puts "Date: #{rental.date}, #{rental.book.title}, #{rental.book.author}" if rental.id = id
+      puts "Date: #{rental.date}, #{rental.book.title}, #{rental.book.author}" if rental.id == id
     end
     choose_a_number
     puts
@@ -158,4 +158,3 @@ class App
     puts 'Thank you for using this app'
   end
 end
-
