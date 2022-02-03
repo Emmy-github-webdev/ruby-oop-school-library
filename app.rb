@@ -76,5 +76,19 @@ class App
     end
   end
 
+  def create_a_student
+    print 'Age: '
+    age = gets.chomp.to_i
+    print 'Name: '
+    name = gets.chomp.to_s
+    print "#{name} has parent permission? [Y/N]: "
+    has_permission = gets.chomp.downcase == 'y'
+    student = Student.new(classroom: @classroom, age: age, name: name, parent_permission: has_permission)
+    @people.push(student)
+    puts
+    puts 'Student created successfully'
+    choose_a_number
+  end
+
 end
 
