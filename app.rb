@@ -116,5 +116,27 @@ class App
     choose_a_number
   end
 
+  def create_a_rental
+    puts 'Select a book from the following list by number'
+    @books.each_with_number do |book, number|
+      puts "#{number} #{book.title} #{book.author}"
+    end
+    book_number = gets.chomp.to_i
+
+    puts 'Select a person from the following list by number (not id)'
+    @people.each_with_number do |person, number|
+      puts "#{number} #{person.name} #{person.age}"
+    end
+    person_number = gets.chomp.to_i
+    puts
+    print 'Date: '
+    date = gets.chomp
+    rental = Rental.new(date, @books[book_number], @people[person_number])
+    @rentals.push(rental)
+
+    puts 'Rental created successfully!'
+    choose_a_number
+    puts
+  end
 end
 
