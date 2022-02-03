@@ -56,5 +56,12 @@ class App
     end
   end
 
+  def list_all_people
+    @people.each do |person|
+      puts "Name: #{person.Name}, Age: #{person.age}, Parent permission: #{person.parent_permission}"
+      puts 'List of People'
+    end
+  end
+
 end
 
