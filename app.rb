@@ -49,6 +49,12 @@ class App
     end
   end
 
+  def list_all_books
+    @books.each do |book|
+      puts "Title: #{book.title}, #{book.author}"
+      puts 'List of Books'
+    end
+  end
 
 end
 
