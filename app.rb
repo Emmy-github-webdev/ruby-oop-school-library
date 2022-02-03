@@ -63,5 +63,18 @@ class App
     end
   end
 
+  def create_a_person
+    puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    input = gets.chomp
+    case input
+    when '1'
+      create_a_student
+    when '2'
+      create_a_teacher
+    else
+      exit
+    end
+  end
+
 end
 
