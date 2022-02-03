@@ -4,7 +4,7 @@ require './app'
 
 def main
   app = App.new
-  app.run
+  app.run_app
 end
 
 main

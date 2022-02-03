@@ -15,6 +15,10 @@ class App
     @rentals = []
   end
 
+  def run_app
+    choose_a_number
+  end
+
   def choose_a_number
     puts
     puts 'Please choose an option by entering a number:'
@@ -26,8 +30,8 @@ class App
     puts '6 - List all rentals for a given person id'
     puts '7 - Exit'
 
-    action_based_on_number_choosed = get.chomp
-    choose_a_number action_based_on_number_choosed
+    user_selection = gets.chomp
+    action_based_on_number_choosed user_selection
   end
 
   def action_based_on_number_choosed(option)
