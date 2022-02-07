@@ -81,13 +81,10 @@ class App
   end
 
   def create_a_student
-    print 'Age: '
-    age = gets.chomp.to_i
-    print 'Name: '
-    name = gets.chomp.to_s
+    age, name = person_general_info.values_at(:age, :name)
     print "#{name} has parent permission? [Y/N]: "
     has_permission = gets.chomp.downcase == 'y'
-    student = Student.new(classroom: @classroom, age: age, name: name, parent_permission: has_permission)
+    student = Student.new(classroom: @classroom, age, name, parent_permission: has_permission)
     @people.push(student)
     puts 'Student created successfully'
     choose_a_number
@@ -104,6 +101,14 @@ class App
     @people.push(teacher)
     puts 'Teacher created successfully'
     choose_a_number
+  end
+
+  def person_general_info
+    print 'Age: '
+    age = gets.chomp.to_i
+    print 'Name: '
+    name = gets.chomp
+    { age: age, name: name }
   end
 
   def create_a_book
