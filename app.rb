@@ -91,13 +91,10 @@ class App
   end
 
   def create_a_teacher
-    print 'Age: '
-    age = gets.chomp.to_i
-    print 'Name: '
-    name = gets.chomp.to_s
+    age, name = person_general_info.values_at(:age, :name)
     print 'Specialization: '
     specialization = gets.chomp
-    teacher = Teacher.new(age: age, name: name, specialization: specialization)
+    teacher = Teacher.new(age, name, specialization: specialization)
     @people.push(teacher)
     puts 'Teacher created successfully'
     choose_a_number
