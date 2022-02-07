@@ -108,15 +108,19 @@ class App
     { age: age, name: name }
   end
 
-  def create_a_book
-    print 'Title: '
-    title = gets.chomp
-    print 'Author'
-    author = gets.chomp
+  def create_a_book(title, author)
     book = Book.new(title, author)
     @book.push(book)
     puts 'Book cretaed successfully'
     choose_a_number
+  end
+
+  def book_info
+    print 'Title: '
+    title = gets.chomp
+    print 'Author'
+    author = gets.chomp
+    create_a_book(title, author)
   end
 
   def create_a_rental
