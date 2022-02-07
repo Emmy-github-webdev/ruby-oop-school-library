@@ -90,7 +90,6 @@ class App
     student = Student.new(classroom: @classroom, age: age, name: name, parent_permission: has_permission)
     @people.push(student)
     puts 'Student created successfully'
-    puts
     choose_a_number
   end
 
@@ -104,7 +103,6 @@ class App
     teacher = Teacher.new(age: age, name: name, specialization: specialization)
     @people.push(teacher)
     puts 'Teacher created successfully'
-    puts
     choose_a_number
   end
 
@@ -116,7 +114,6 @@ class App
     book = Book.new(title, author)
     @book.push(book)
     puts 'Book cretaed successfully'
-    puts
     choose_a_number
   end
 
@@ -140,7 +137,6 @@ class App
 
     puts 'Rental created successfully!'
     choose_a_number
-    puts
   end
 
   def list_all_rentals_for_a_person
@@ -151,7 +147,6 @@ class App
       puts "Date: #{rental.date}, #{rental.book.title}, #{rental.book.author}" if rental.id == id
     end
     choose_a_number
-    puts
   end
 
   def exit
