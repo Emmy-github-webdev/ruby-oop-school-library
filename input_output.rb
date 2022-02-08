@@ -58,4 +58,13 @@ class IO
     end
     File.write('data/rentals.json', JSON.dump(@rentals_array))
   end
+
+  def rental_student(rental)
+    {
+      'id' => rental.person.id,
+      'age' => rental.person.age,
+      'name' => rental.person.name,
+      'parent_permission' => rental.person.parent_permission
+    }
+  end
 end
