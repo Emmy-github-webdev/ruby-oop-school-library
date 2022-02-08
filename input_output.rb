@@ -7,4 +7,13 @@ class IO
     @add_people = add_people
     @add_rentals = add_rentals
   end
+
+  def create_people(person)
+    if person['specialization']
+      Teacher.new(person['specialization'], person['name'], person['age'], person['id'])
+    else
+      Student.new(person['age'], person['name'], person['classroom'],
+                  person['id'], parent_permission: person['parent_permission'])
+    end
+  end
 end
