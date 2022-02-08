@@ -81,37 +81,30 @@ class App
   end
 
   def create_a_student
-    age, name = person_general_info.values_at(:age, :name)
+    print 'Age: '
+    age = gets.chomp.to_i
+    print 'Name: '
+    name = gets.chomp.to_s
     print "#{name} has parent permission? [Y/N]: "
     has_permission = gets.chomp.downcase == 'y'
-    student = Student.new(age, name, parent_permission: has_permission)
+    student = Student.new(classroom: @classroom, age: age, name: name, parent_permission: has_permission)
     @people.push(student)
     puts 'Student created successfully'
+    puts
     choose_a_number
   end
 
   def create_a_teacher
-    age, name = person_general_info.values_at(:age, :name)
-    print 'Specialization: '
-    specialization = gets.chomp
-    teacher = Teacher.new(age, name, specialization: specialization)
-    @people.push(teacher)
-    puts 'Teacher created successfully'
-    choose_a_number
-  end
-
-  def person_general_info
     print 'Age: '
     age = gets.chomp.to_i
     print 'Name: '
-    name = gets.chomp
-    { age: age, name: name }
-  end
-
-  def book_info(title, author)
-    book = Book.new(title, author)
-    @book.push(book)
-    puts 'Book cretaed successfully'
+    name = gets.chomp.to_s
+    print 'Specialization: '
+    specialization = gets.chomp
+    teacher = Teacher.new(age: age, name: name, specialization: specialization)
+    @people.push(teacher)
+    puts 'Teacher created successfully'
+    puts
     choose_a_number
   end
 
@@ -120,7 +113,11 @@ class App
     title = gets.chomp
     print 'Author'
     author = gets.chomp
-    book_info(title, author)
+    book = Book.new(title, author)
+    @book.push(book)
+    puts 'Book cretaed successfully'
+    puts
+    choose_a_number
   end
 
   def create_a_rental
@@ -143,6 +140,7 @@ class App
 
     puts 'Rental created successfully!'
     choose_a_number
+    puts
   end
 
   def list_all_rentals_for_a_person
@@ -153,6 +151,7 @@ class App
       puts "Date: #{rental.date}, #{rental.book.title}, #{rental.book.author}" if rental.id == id
     end
     choose_a_number
+    puts
   end
 
   def exit
