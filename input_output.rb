@@ -17,6 +17,16 @@ class IO
     end
   end
 
+  def save_people
+    @add_people.people.each do |person|
+      
+    end
+  end
+
+  def add_new_student(person)
+    @people_array << {'id' => person.id, 'age' => person.age, 'name' => person.name, 'classroom' => person.classroom, 'parent_permission' => person.parent_permission}
+  end
+
   def add_new_book
     @add_book.books.each { |book| @book_array << { 'title' => book.title, 'author' => book.author } }
     File.write('data/book.json', JSON.dump(@book_array))
