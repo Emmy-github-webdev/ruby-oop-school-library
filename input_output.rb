@@ -76,4 +76,18 @@ class IO
       'specialization' => rental.person.specialization
     }
   end
+
+  def fetch_books
+    books = []
+    return [] unless File.exist?('data/book.json')
+
+    book_array = JSON.parse(File.read('data/book.json'))
+    book_array.each do |book_items|
+      books << Book.new(
+        book_items['title'],
+        book_items['author']
+      )
+    end
+    books
+  end
 end
