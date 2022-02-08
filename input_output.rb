@@ -90,4 +90,15 @@ class IO
     end
     books
   end
+
+  def fetch_people
+    people = []
+    return [] unless File.exist?('data/people.json')
+
+    people_array = JSON.parse(File.read('data/people.json'))
+    people_array.each do |person|
+      people << create_people(person)
+    end
+    people
+  end
 end
