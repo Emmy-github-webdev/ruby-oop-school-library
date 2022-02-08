@@ -101,4 +101,17 @@ class IO
     end
     people
   end
+
+  def fetch_rentals
+    rentals = []
+    return [] unless File.exist?('data/rentals.json')
+
+    rentals_array = JSON.parse(File.read('data/rentals.json'))
+    rentals_array.each do |rental|
+      book, person = rental.value_at('book', 'person')
+      rentals << Rental.new(rental['date'], Book.new(book['title'], book['author']),
+                            create_people(person))
+    end
+    rentals
+  end
 end
