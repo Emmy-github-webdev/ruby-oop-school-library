@@ -16,4 +16,9 @@ class IO
                   person['id'], parent_permission: person['parent_permission'])
     end
   end
+
+  def add_new_book
+    @add_book.books.each { |book| @book_array << { 'title' => book.title, 'author' => book.author } }
+    File.write('data/book.json', JSON.dump(@book_array))
+  end
 end
