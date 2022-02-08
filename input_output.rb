@@ -26,10 +26,10 @@ class IO
 
   def add_new_student(person)
     @people_array << {
-      'id' => person.id, 
-      'age' => person.age, 
-      'name' => person.name, 
-      'classroom' => person.classroom, 
+      'id' => person.id,
+      'age' => person.age,
+      'name' => person.name,
+      'classroom' => person.classroom,
       'parent_permission' => person.parent_permission
     }
   end
@@ -48,4 +48,14 @@ class IO
     File.write('data/book.json', JSON.dump(@book_array))
   end
 
+  def add_new_rentals
+    @add_rentals.rentals.each do |rental|
+      @rentals_array << {
+        'date' => rental.date,
+        'book' => { 'title' => rental.book.title, 'author' => rental.book.author },
+        'person' => rental.person.is_a?(Teacher) ? rental_teacher(rental) : rental_student(rental)
+      }
+    end
+    File.write('data/rentals.json', JSON.dump(@rentals_array))
+  end
 end
