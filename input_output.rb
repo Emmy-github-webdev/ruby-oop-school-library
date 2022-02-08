@@ -19,8 +19,9 @@ class IO
 
   def save_people
     @add_people.people.each do |person|
-      
+      person.is_a?(student) ? add_new_student(person) : add_new_teacher(person)
     end
+    File.write('data/people.json', JSON.dump(@people_array))
   end
 
   def add_new_student(person)
