@@ -8,6 +8,12 @@ class IO
     @add_rentals = add_rentals
   end
 
+  def save_data_to_file
+    add_new_book
+    add_new_rentals
+    add_new_people
+  end
+
   def create_people(person)
     if person['specialization']
       Teacher.new(person['specialization'], person['name'], person['age'], person['id'])
@@ -17,7 +23,7 @@ class IO
     end
   end
 
-  def save_people
+  def add_new_people
     @add_people.people.each do |person|
       person.is_a?(student) ? add_new_student(person) : add_new_teacher(person)
     end
