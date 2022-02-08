@@ -67,4 +67,13 @@ class IO
       'parent_permission' => rental.person.parent_permission
     }
   end
+
+  def rental_teacher(rental)
+    {
+      'id' => rental.person.id,
+      'age' => rental.person.age,
+      'name' => rental.person.name,
+      'specialization' => rental.person.specialization
+    }
+  end
 end
