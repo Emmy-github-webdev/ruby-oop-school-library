@@ -27,8 +27,7 @@ class AppIO
     if person['specialization']
       Teacher.new(person['specialization'], person['name'], person['age'], person['id'])
     else
-      Student.new(person['age'], person['name'], person['classroom'],
-                  person['id'], parent_permission: person['parent_permission'])
+      Student.new(person['age'], person['name'], person['classroom'], person['id'], parent_permission: person['parent_permission'])
     end
   end
 
@@ -49,7 +48,7 @@ class AppIO
 
     rentals_array = JSON.parse(File.read('./data/rentals.json'))
     rentals_array.each do |rental|
-      book, person = rental.value_at('book', 'person')
+      book, person = rental.values_at('book', 'person')
       rentals << Rental.new(rental['date'], Book.new(book['title'], book['author']),
                             create_people(person))
     end
@@ -60,7 +59,7 @@ class AppIO
 
   def add_new_people
     @add_people.people.each do |person|
-      person.is_a?(student) ? add_new_student(person) : add_new_teacher(person)
+      person.is_a?(Student) ? add_new_student(person) : add_new_teacher(person)
     end
     File.write('./data/people.json', JSON.dump(@people_array))
   end

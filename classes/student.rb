@@ -1,11 +1,12 @@
 require_relative 'person'
+require 'json'
 
 class Student < Person
   attr_reader :classroom, :parent_permission
 
-  def initialize(age, name, classroom = 'Room 1A', id: 'auto', parent_permission: true)
-    super(age, name, id, parent_permission: parent_permission)
+  def initialize(age, name, classroom = 'Block', parent_permission: true, id: 'auto')
     @classroom = classroom
+    super(age, name, id, parent_permission: parent_permission)
   end
 
   def play_hooky
