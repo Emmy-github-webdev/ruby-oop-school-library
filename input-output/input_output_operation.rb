@@ -167,4 +167,15 @@ class DisplayMenuOptions
     puts 'Please choose an option by entering a nunber: '
     @choices.each_with_index { |choice, i| puts "#{i + 1}. #{choice}" }
   end
+
+  def option(user_choice)
+    case user_choice
+    when 1, 2, 3, 4
+      @noteoperation.operation_person(user_choice)
+    when 5, 6
+      @noteoperation.operation_rentals(user_choice)
+    else
+      @noteoperation.exit_operation(user_choice)
+    end
+  end
 end
