@@ -42,3 +42,22 @@ class PeopleCreation
     puts "#{name} created successfully"
   end
 end
+
+class BookCreation
+  def initialize
+    @io_data = IO.new
+    @books = @io_data.read_books
+  end
+
+  attr_reader :books
+
+  def create_book
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+    newbook = Book.new(title, author)
+    @books.push(newbook)
+    puts "#{title} created successfully"
+  end
+end
