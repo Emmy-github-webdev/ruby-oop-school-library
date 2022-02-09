@@ -1,5 +1,4 @@
 class AppIO
-
   def initialize(add_book = {}, add_people = {}, add_rentals = {})
     @book_array = []
     @people_array = []
