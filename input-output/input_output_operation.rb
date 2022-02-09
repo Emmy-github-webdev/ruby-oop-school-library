@@ -22,4 +22,11 @@ class PeopleCreation
     classroom = Classroom.new('Room 1A')
     @people << Student.new(age, name, classroom, parent_permission: parent_permission)
   end
+
+  def create_teacher(age, name)
+    print 'specialization: '
+    specialization = gets.chomp
+
+    @people << Teacher.new(specialization, age, name)
+  end
 end
