@@ -125,4 +125,13 @@ class NoteOperation
     @add_rentals = RentalCreation.new(@add_book, @add_people)
     @io_data = IO.new(@add_book, @add_people, @add_rentals)
   end
+
+  def operation_person(user_input)
+    if user_input > 2
+      user_input.odd? ? @add_book.create_book: @add_people.create_person
+    elsif user_input.odd?
+      @add_book.list_books
+    else
+      @add_people.people_lists
+  end
 end
