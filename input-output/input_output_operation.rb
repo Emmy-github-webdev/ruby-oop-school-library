@@ -105,4 +105,15 @@ class RentalCreation
     @rentals << Rental.new(date, @book_input, @person_input) unless @person_input.nil?
     puts 'Rentals created successfully'
   end
+
+  def list_rentals_for_a_given_person
+    puts 'List of persons with IDs'
+    @people.people_lists
+    puts 'Select ID of the person: '
+    person_id = gets.chomp.to_i
+
+    @rentals.each do |rental|
+      puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" if rental.person.id == person_id
+    end
+  end
 end
