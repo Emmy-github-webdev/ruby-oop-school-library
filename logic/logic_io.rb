@@ -27,7 +27,8 @@ class AppIO
     if person['specialization']
       Teacher.new(person['specialization'], person['name'], person['age'], person['id'])
     else
-      Student.new(person['age'], person['name'], person['classroom'], person['id'], parent_permission: person['parent_permission'])
+      Student.new(person['age'], person['name'], person['classroom'], person['id'],
+                  parent_permission: person['parent_permission'])
     end
   end
 
