@@ -158,7 +158,13 @@ end
 
 class DisplayMenuOptions
   def initialize
-    @choices = ['List all books', 'List all people', 'Create a book', 'Create a person', 'Create a rental', 'List all rentals for a person', 'Exit']
+    @choices = ['List all books', 'List all people', 'Create a book', 'Create a person', 'Create a rental',
+                'List all rentals for a person', 'Exit']
     @noteoperation = NoteOperation.new
+  end
+
+  def menu
+    puts 'Please choose an option by entering a nunber: '
+    @choices.each_with_index { |choice, i| puts "#{i + 1}. #{choice}" }
   end
 end
