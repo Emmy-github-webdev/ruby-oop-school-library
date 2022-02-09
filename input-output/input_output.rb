@@ -27,7 +27,7 @@ class IO
     @add_people.people.each do |person|
       person.is_a?(student) ? add_new_student(person) : add_new_teacher(person)
     end
-    File.write('data/people.json', JSON.dump(@people_array))
+    File.write('./data/people.json', JSON.dump(@people_array))
   end
 
   def add_new_student(person)
@@ -51,7 +51,7 @@ class IO
 
   def add_new_book
     @add_book.books.each { |book| @book_array << { 'title' => book.title, 'author' => book.author } }
-    File.write('data/book.json', JSON.dump(@book_array))
+    File.write('./data/book.json', JSON.dump(@book_array))
   end
 
   def add_new_rentals
@@ -62,7 +62,7 @@ class IO
         'person' => rental.person.is_a?(Teacher) ? rental_teacher(rental) : rental_student(rental)
       }
     end
-    File.write('data/rentals.json', JSON.dump(@rentals_array))
+    File.write('./data/rentals.json', JSON.dump(@rentals_array))
   end
 
   def rental_student(rental)
@@ -85,9 +85,9 @@ class IO
 
   def fetch_books
     books = []
-    return [] unless File.exist?('data/book.json')
+    return [] unless File.exist?('./data/book.json')
 
-    book_array = JSON.parse(File.read('data/book.json'))
+    book_array = JSON.parse(File.read('./data/book.json'))
     book_array.each do |book_items|
       books << Book.new(
         book_items['title'],
@@ -99,9 +99,9 @@ class IO
 
   def fetch_people
     people = []
-    return [] unless File.exist?('data/people.json')
+    return [] unless File.exist?('./data/people.json')
 
-    people_array = JSON.parse(File.read('data/people.json'))
+    people_array = JSON.parse(File.read('./data/people.json'))
     people_array.each do |person|
       people << create_people(person)
     end
@@ -110,9 +110,9 @@ class IO
 
   def fetch_rentals
     rentals = []
-    return [] unless File.exist?('data/rentals.json')
+    return [] unless File.exist?('./data/rentals.json')
 
-    rentals_array = JSON.parse(File.read('data/rentals.json'))
+    rentals_array = JSON.parse(File.read('./data/rentals.json'))
     rentals_array.each do |rental|
       book, person = rental.value_at('book', 'person')
       rentals << Rental.new(rental['date'], Book.new(book['title'], book['author']),
