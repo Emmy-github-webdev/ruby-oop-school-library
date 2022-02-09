@@ -116,6 +116,13 @@ class RentalCreation
       puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" if rental.person.id == person_id
     end
   end
+
+  def create_rental_handler
+    for_book_input
+    for_person_input
+    create_rental
+  end
+
 end
 
 class NoteOperation
@@ -133,5 +140,11 @@ class NoteOperation
       @add_book.list_books
     else
       @add_people.people_lists
+    end
   end
+
+  def operation_rentals(user_input)
+    user_input == 5 ? @add_rentals.create_rental_handler : @add_rentals.list_rentals_for_a_given_person 
+  end
+
 end
