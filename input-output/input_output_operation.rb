@@ -10,7 +10,7 @@ class PeopleCreation
 
   def people_lists
     @people.each_with_index do |person, i|
-      print "#{i} "
+      print "#{i}- "
       print person.is_a?(Student) ? '[Student]' : '[Teacher]'
       puts "Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
@@ -59,5 +59,11 @@ class BookCreation
     newbook = Book.new(title, author)
     @books.push(newbook)
     puts "#{title} created successfully"
+  end
+
+  def list_books
+    @books.each_with_index do |book, i|
+      puts "#{i}- Title: #{book.title}, Author: #{book.author}"
+    end
   end
 end
