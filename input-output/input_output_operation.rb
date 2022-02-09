@@ -117,3 +117,12 @@ class RentalCreation
     end
   end
 end
+
+class NoteOperation
+  def initialize
+    @add_book = BookCreation.new
+    @add_people = PeopleCreation.new
+    @add_rentals = RentalCreation.new(@add_book, @add_people)
+    @io_data = IO.new(@add_book, @add_people, @add_rentals)
+  end
+end
