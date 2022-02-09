@@ -67,3 +67,23 @@ class BookCreation
     end
   end
 end
+
+class RentalCreation
+  def initialize(books, people)
+    @io_data = IO.new
+    @books = books
+    @people = people
+    @rentals = @io_data.read_rentals
+    @book_input = nil
+    @person_input = nil
+  end
+
+  attr_reader :rentals
+
+  def for_book_input
+    puts 'Select a book from the list of books below, enter the number: '
+    @books.list_books
+    user_book_input = gets.chomp.to_i
+    @book_input = user_book_input < @books.books.length ? @books.books[user_book_input] : ''
+  end
+end
