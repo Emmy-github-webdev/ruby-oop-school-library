@@ -155,3 +155,10 @@ class NoteOperation
     end
   end
 end
+
+class DisplayMenuOptions
+  def initialize
+    @choices = ['List all books', 'List all people', 'Create a book', 'Create a person', 'Create a rental', 'List all rentals for a person', 'Exit']
+    @noteoperation = NoteOperation.new
+  end
+end
