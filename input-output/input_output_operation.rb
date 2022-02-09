@@ -19,5 +19,7 @@ class PeopleCreation
   def create_student(age, name)
     print 'Do sutent has parent permission? [Y/N]'
     parent_permission = gets.chomp.downcase == 'y'
+    classroom = Classroom.new('Room 1A')
+    @people << Student.new(age, name, classroom, parent_permission: parent_permission)
   end
 end
