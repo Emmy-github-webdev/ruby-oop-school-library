@@ -29,4 +29,16 @@ class PeopleCreation
 
     @people << Teacher.new(specialization, age, name)
   end
+
+  def create_person
+    puts 'Do you want to create a student (1) or teacher (2)? [Input the number]: )'
+    user_option = gets.chomp
+    print 'Age: '
+    age = gets.chomp
+    print 'Name: '
+    name = gets.chomp
+    user_option == '1' ? create_student(age, name) : create_teacher(age, name)
+
+    puts "#{name} created successfully"
+  end
 end
