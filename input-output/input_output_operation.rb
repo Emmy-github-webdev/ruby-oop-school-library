@@ -86,4 +86,23 @@ class RentalCreation
     user_book_input = gets.chomp.to_i
     @book_input = user_book_input < @books.books.length ? @books.books[user_book_input] : ''
   end
+
+  def for_person_input
+    puts 'Select a person from the list of persons below, enter the number: '
+    @people.people_lists
+    user_person_input = gets.chomp.to_i
+
+    if user_person_input < @people.people.length
+      @person_input = @people.people[user_person_input]
+    else
+      puts 'Incorrect selection'
+    end
+  end
+
+  def create_rental
+    puts 'Date: '
+    date = gets.chomp
+    @rentals << Rental.new(date, @book_input, @person_input) unless @person_input.nil?
+    puts 'Rentals created successfully'
+  end
 end
