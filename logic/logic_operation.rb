@@ -1,9 +1,11 @@
-require_relative 'input_output'
+require 'json'
+Dir['../classes/*.rb'].sort.each { |file| require file }
+require_relative 'logic_io'
 
 class PeopleCreation
   def initialize
-    @io_data = IO.new
-    @people = @IO.read_people
+    @io_data = AppIO.new
+    @people = @io_data.fetch_people
   end
 
   attr_reader :people
@@ -45,8 +47,8 @@ end
 
 class BookCreation
   def initialize
-    @io_data = IO.new
-    @books = @io_data.read_books
+    @io_data = AppIO.new
+    @books = @io_data.fetch_books
   end
 
   attr_reader :books
@@ -70,10 +72,10 @@ end
 
 class RentalCreation
   def initialize(books, people)
-    @io_data = IO.new
+    @io_data = AppIO.new
     @books = books
     @people = people
-    @rentals = @io_data.read_rentals
+    @rentals = @io_data.fetch_rentals
     @book_input = nil
     @person_input = nil
   end
@@ -129,7 +131,7 @@ class NoteOperation
     @add_book = BookCreation.new
     @add_people = PeopleCreation.new
     @add_rentals = RentalCreation.new(@add_book, @add_people)
-    @io_data = IO.new(@add_book, @add_people, @add_rentals)
+    @io_data = AppIO.new(@add_book, @add_people, @add_rentals)
   end
 
   def operation_person(user_input)
@@ -148,7 +150,7 @@ class NoteOperation
 
   def exit_operation(user_input)
     if user_input == 7
-      @io_data.save_data
+      @io_data.save_data_to_file
       puts 'Exiting...'
     else
       puts 'Incorrect selection'

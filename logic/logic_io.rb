@@ -1,4 +1,5 @@
-class IO
+class AppIO
+
   def initialize(add_book = {}, add_people = {}, add_rentals = {})
     @book_array = []
     @people_array = []
@@ -14,6 +15,15 @@ class IO
     add_new_people
   end
 
+  def fetch_books
+    books = []
+    return [] unless File.exist?('./data/book.json')
+
+    book_array = JSON.parse(File.read('./data/book.json'))
+    book_array.each { |book_items| books << Book.new(book_items['title'], book_items['author']) }
+    books
+  end
+
   def create_people(person)
     if person['specialization']
       Teacher.new(person['specialization'], person['name'], person['age'], person['id'])
@@ -22,6 +32,32 @@ class IO
                   person['id'], parent_permission: person['parent_permission'])
     end
   end
+
+  def fetch_people
+    people = []
+    return [] unless File.exist?('./data/people.json')
+
+    people_array = JSON.parse(File.read('./data/people.json'))
+    people_array.each do |person|
+      people << create_people(person)
+    end
+    people
+  end
+
+  def fetch_rentals
+    rentals = []
+    return [] unless File.exist?('./data/rentals.json')
+
+    rentals_array = JSON.parse(File.read('./data/rentals.json'))
+    rentals_array.each do |rental|
+      book, person = rental.value_at('book', 'person')
+      rentals << Rental.new(rental['date'], Book.new(book['title'], book['author']),
+                            create_people(person))
+    end
+    rentals
+  end
+
+  private
 
   def add_new_people
     @add_people.people.each do |person|
@@ -81,43 +117,5 @@ class IO
       'name' => rental.person.name,
       'specialization' => rental.person.specialization
     }
-  end
-
-  def fetch_books
-    books = []
-    return [] unless File.exist?('./data/book.json')
-
-    book_array = JSON.parse(File.read('./data/book.json'))
-    book_array.each do |book_items|
-      books << Book.new(
-        book_items['title'],
-        book_items['author']
-      )
-    end
-    books
-  end
-
-  def fetch_people
-    people = []
-    return [] unless File.exist?('./data/people.json')
-
-    people_array = JSON.parse(File.read('./data/people.json'))
-    people_array.each do |person|
-      people << create_people(person)
-    end
-    people
-  end
-
-  def fetch_rentals
-    rentals = []
-    return [] unless File.exist?('./data/rentals.json')
-
-    rentals_array = JSON.parse(File.read('./data/rentals.json'))
-    rentals_array.each do |rental|
-      book, person = rental.value_at('book', 'person')
-      rentals << Rental.new(rental['date'], Book.new(book['title'], book['author']),
-                            create_people(person))
-    end
-    rentals
   end
 end

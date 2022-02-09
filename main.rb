@@ -1,4 +1,5 @@
-require_relative 'input-output/input_output_operation'
+Dir['./classes/*.rb'].sort.each { |file| require file }
+require_relative 'logic/logic_operation'
 
 def main
   optionselected = DisplayMenuOptions.new
