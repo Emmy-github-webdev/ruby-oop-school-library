@@ -122,7 +122,6 @@ class RentalCreation
     for_person_input
     create_rental
   end
-
 end
 
 class NoteOperation
@@ -135,7 +134,7 @@ class NoteOperation
 
   def operation_person(user_input)
     if user_input > 2
-      user_input.odd? ? @add_book.create_book: @add_people.create_person
+      user_input.odd? ? @add_book.create_book : @add_people.create_person
     elsif user_input.odd?
       @add_book.list_books
     else
@@ -144,7 +143,15 @@ class NoteOperation
   end
 
   def operation_rentals(user_input)
-    user_input == 5 ? @add_rentals.create_rental_handler : @add_rentals.list_rentals_for_a_given_person 
+    user_input == 5 ? @add_rentals.create_rental_handler : @add_rentals.list_rentals_for_a_given_person
   end
 
+  def exit_operation(user_input)
+    if user_input == 7
+      @io_data.save_data
+      puts 'Exiting...'
+    else
+      puts 'Incorrect selection'
+    end
+  end
 end
