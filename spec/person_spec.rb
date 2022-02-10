@@ -1,7 +1,11 @@
 require 'rspec'
 require_relative '../classes/person'
+require_relative '../classes/corrector'
 
 describe Person do
+  before :all do
+    @corrector = Corrector.new
+  end
   context 'Testing person class' do
     it 'A person should have age' do
       person = Person.new(18)
@@ -18,6 +22,11 @@ describe Person do
     it 'Can_use_service? Check age is greater than 18 years' do
       person = Person.new(21)
       expect(person.can_use_services?).to be true
+    end
+
+    it 'Should capitalize the first letter of a name' do
+      person = Person.new(2, 'emmanuel')
+      expect(@corrector.correct_name(person.name)).to eq 'Emmanuel'
     end
   end
 end
