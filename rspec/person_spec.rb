@@ -14,5 +14,10 @@ describe Person do
       person_info = [person.id, person.age, person.name, person.parent_permission]
       expect(person_info).to eq [id, 21, 'Emmanuel', true]
     end
+
+    it 'Can_use_service? Check age is greater than 18 years' do
+      person = Person.new(21)
+      expect(person.can_use_services?).to be true
+    end
   end
 end
