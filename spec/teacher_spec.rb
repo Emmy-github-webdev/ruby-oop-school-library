@@ -12,5 +12,10 @@ describe Teacher do
 
       expect(teacher_info).to eq %w[Age Name Specialization]
     end
+
+    it 'can_use_services? should return true' do
+      teacher = Teacher.new('Engineering', 'Oche', 100)
+      expect(teacher.can_use_services?).to be true
+    end
   end
 end
