@@ -8,7 +8,7 @@ describe Teacher do
       age = teacher.age
       name = teacher.name
       specialization = teacher.specialization
-      teacher_info = [specialization, age]
+      teacher_info = [specialization, age, name]
 
       expect(teacher_info).to eq %w[Age Name Specialization]
     end
