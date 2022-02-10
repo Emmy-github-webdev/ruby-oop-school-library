@@ -11,5 +11,10 @@ describe Student do
 
       expect(student_info).to eq %w[Age Name]
     end
+
+    it 'play_hookey should return  "¯\(ツ)/¯" without error' do
+      student = Student.new(10, 'Ogah')
+      expect(student.play_hooky).to eq "¯\(ツ)/¯"
+    end
   end
 end
