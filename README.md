@@ -26,6 +26,14 @@ Run the Interactive Ruby Shell.
 irb
 ```
 
+## Unit Test
+> Write unit tests using Rspec
+- Install Rspec "gem install rspec"
+> Run test 
+- cd ruby-oop-school-library/spec
+- rspec spec book_spec.rb
+> Note: Where book_spec.rb is the test file
+
 ## Authors
 
 👤 **Emmanuel Ogah**
