@@ -8,15 +8,15 @@ describe Classroom do
   end
 
   context 'Testing classroom class' do
-  it 'Classroom should initialize without error' do
-    expect(@classroom.label).to eq 'ogah'
-  end
+    it 'Classroom should initialize without error' do
+      expect(@classroom.label).to eq 'ogah'
+    end
 
-  it 'Create student without error' do
-    student = Student.new(2, 'Emmanuel', @classroom)
-    @classroom.add_student(student)
+    it 'Create student without error' do
+      student = Student.new(2, 'Emmanuel', @classroom)
+      @classroom.add_student(student)
 
-    expect(@classroom.students.length).to eq 1
-  end
+      expect(@classroom.students.length).to eq 1
+    end
   end
 end
